@@ -12,8 +12,7 @@ case when month(to_timestamp(started_at)) in (12,1,2) then 'WINTER'
      when month(to_timestamp(started_at)) in (6,7,8) then 'SUMMER'
 else 'AUUMN' end as station_of_year
 
-from
-{{ source('DEMO', 'BIKE') }}
+from {{ ref('stage_bike') }}
 where started_at <>'started_at'
 )
 
